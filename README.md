@@ -1,5 +1,6 @@
 # Nortek DVL1000 ROS Interface Layer
-by your friends at ARVP from University of Alberta
+
+ROS Interface layer for Nortek DVL1000 by your friends at [ARVP](arvp.org) from University of Alberta
 
 Connects to DVL over Ethernet (port:9004) and publishes DVL data + status.
 Velocities are output in m/s (or NaN if invalid).
