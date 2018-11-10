@@ -9,7 +9,7 @@
 	    <param name="address" type="string" value="nortek-dvl" />
     	<param name="port" type="int" value="9004" />
         <param name="dvl_rotation" type="double" value="0" />
+        <param name="dvl_topic" type="string" value="dvl" />
     	<param name="status_topic" type="string" value="status" />
     </node>
-    <rosparam command="load" file="$(find au_core)/params/topics.yaml" />
 </launch>

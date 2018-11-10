@@ -12,7 +12,7 @@ DvlInterface::DvlInterface()
   readParams();
   connect();
 
-  dvl_pub_ = nh_.advertise<nortek_dvl::Dvl>(dvl_topic_, 10);
+  dvl_pub_ = private_nh_.advertise<nortek_dvl::Dvl>(dvl_topic_, 10);
   dvl_status_pub_ =
       private_nh_.advertise<nortek_dvl::DvlStatus>(dvl_status_topic_, 10);
 }
@@ -183,9 +183,9 @@ void DvlInterface::readParams() {
   private_nh_.getParam("address", address_);
   private_nh_.getParam("port", port);
   port_ = static_cast<uint16_t>(port);
+  private_nh_.getParam("dvl_topic", dvl_topic_);
   private_nh_.getParam("status_topic", dvl_status_topic_);
   private_nh_.getParam("dvl_rotation", dvl_rotation_);
-  nh_.getParam("topic/sensor/dvl", dvl_topic_);
 
   std::cout << "DVL PARAMS" << std::endl;
   std::cout << "-----------------" << std::endl;
@@ -194,7 +194,8 @@ void DvlInterface::readParams() {
   std::cout << "rotation: " << dvl_rotation_ << std::endl;
   std::cout << "status_topic: " << ros::this_node::getName() << "/"
             << dvl_status_topic_ << std::endl;
-  std::cout << "dvl data topic: " << dvl_topic_ << std::endl;
+  std::cout << "dvl data topic: " << ros::this_node::getName() << "/" 
+            << dvl_topic_ << std::endl;
   std::cout << "-----------------\n" << std::endl;
 }
 
